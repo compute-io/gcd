@@ -34,6 +34,8 @@ var val = gcd( [8, 12, 16] );
 // returns 4
 ```
 
+If provided an empty `array`, returns `null`.
+
 
 ## Examples
 
