@@ -41,13 +41,14 @@ var val = gcd( [8, 12, 16] );
 var gcd = require( 'compute-gcd' );
 
 // Compute the gcd of random tuples...
-var x, y, z, val;
+var x, y, z, arr, val;
 for ( var i = 0; i < 100; i++ ) {
 	x = Math.round( Math.random()*50 );
 	y = Math.round( Math.random()*50 );
 	z = Math.round( Math.random()*50 );
-	val = gcd( [x,y,z] );
-	console.log( val );
+	arr = [ x, y, z ];
+	val = gcd( arr );
+	console.log( arr, val );
 }
 ```
 
