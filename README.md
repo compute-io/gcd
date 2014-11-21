@@ -1,8 +1,8 @@
-gcd
+Greatest Common Divisor
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> Computes the greatest common divisor (GCD).
+> Computes the [greatest common divisor](http://en.wikipedia.org/wiki/Greatest_common_divisor) (gcd).
 
 
 ## Installation
@@ -19,18 +19,36 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 To use the module,
 
 ``` javascript
-var foo = require( 'compute-gcd' );
+var gcd = require( 'compute-gcd' );
 ```
 
-#### foo( arr )
+#### gcd( arr )
 
-What does this function do?
+Computes the [greatest common divisor](http://en.wikipedia.org/wiki/Greatest_common_divisor) (gcd) of two or more `integers`. 
+
+``` javascript
+var val = gcd( [48, 18] );
+// returns 6
+
+var val = gcd( [8, 12, 16] );
+// returns 4
+```
 
 
 ## Examples
 
 ``` javascript
-var foo = require( 'compute-gcd' );
+var gcd = require( 'compute-gcd' );
+
+// Compute the gcd of random tuples...
+var x, y, z, val;
+for ( var i = 0; i < 100; i++ ) {
+	x = Math.round( Math.random()*50 );
+	y = Math.round( Math.random()*50 );
+	z = Math.round( Math.random()*50 );
+	val = gcd( [x,y,z] );
+	console.log( val );
+}
 ```
 
 To run the example code from the top-level application directory,
@@ -38,6 +56,11 @@ To run the example code from the top-level application directory,
 ``` bash
 $ node ./examples/index.js
 ```
+
+
+## Notes
+
+For more than 3 values, a performance gain can be achieved if the values are sorted in ascending order.
 
 
 ## Tests

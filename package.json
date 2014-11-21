@@ -1,7 +1,7 @@
 {
   "name": "compute-gcd",
   "version": "0.0.0",
-  "description": "Computes the greatest common divisor (GCD).",
+  "description": "Computes the greatest common divisor (gcd).",
   "author": {
     "name": "Athan Reines",
     "email": "kgryte@gmail.com"
@@ -25,12 +25,22 @@
   "keywords": [
     "compute.io",
     "compute",
-    "computation"
+    "computation",
+    "mathematics",
+    "math",
+    "euclid",
+    "greatest common divisor",
+    "greatest common factor",
+    "gcd",
+    "gcf",
+    "arithmetic"
   ],
   "bugs": {
     "url": "https://github.com/compute-io/gcd/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "validate.io-integer": "^1.0.2"
+  },
   "devDependencies": {
     "chai": "1.x.x",
     "mocha": "1.x.x",
