@@ -33,8 +33,13 @@
     "binary gcd",
     "greatest common divisor",
     "greatest common factor",
+    "highest common factor",
+    "greatest common measure",
+    "highest common divisor",
     "gcd",
     "gcf",
+    "hcf",
+    "gcm",
     "arithmetic"
   ],
   "bugs": {

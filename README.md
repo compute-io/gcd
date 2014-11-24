@@ -4,6 +4,9 @@ Greatest Common Divisor
 
 > Computes the [greatest common divisor](http://en.wikipedia.org/wiki/Greatest_common_divisor) (gcd).
 
+Note: the gcd is also known as the __greatest common factor__ (gcf), __highest common factor__ (hcf), __highest common divisor__, and __greatest common measure__ (gcm).
+
+
 
 ## Installation
 
