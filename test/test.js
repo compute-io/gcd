@@ -1,3 +1,4 @@
+/* global require, describe, it */
 'use strict';
 
 // MODULES //
@@ -23,7 +24,7 @@ describe( 'compute-gcd', function tests() {
 		expect( gcd ).to.be.a( 'function' );
 	});
 
-	it( 'should throw an error if not provided an array', function test() {
+	it( 'should throw an error if not provided an integer array', function test() {
 		var values = [
 			'5',
 			5,
@@ -31,7 +32,13 @@ describe( 'compute-gcd', function tests() {
 			undefined,
 			NaN,
 			{},
-			function(){}
+			function(){},
+			[ Math.PI, 2 ],
+			[ '1', 2 ],
+			[ 1, Math.PI ],
+			[ 1, '2' ],
+			[ 1, NaN ],
+			[ 1, null ]
 		];
 
 		for ( var i = 0; i < values.length; i++ ) {
@@ -45,31 +52,19 @@ describe( 'compute-gcd', function tests() {
 		}
 	});
 
-	it( 'should throw an error if not provided an array of integers', function test() {
-		var values = [
-			'5',
-			5.245,
-			null,
-			undefined,
-			NaN,
-			{},
-			function(){}
-		];
+	it( 'should throw an error if an accessed value is not an integer', function test() {
+		expect( badValue ).to.throw( TypeError );
 
-		for ( var i = 0; i < values.length; i++ ) {
-			expect( badValue1( values[i] ) ).to.throw( TypeError );
-			expect( badValue2( values[i] ) ).to.throw( TypeError );
-		}
+		function badValue() {
+			var arr = [
+				{'x':Math.PI},
+				{'x':5}
+			];
 
-		function badValue1( value ) {
-			return function() {
-				gcd( [ value, 4 ] );
-			};
+			gcd( arr, getValue );
 		}
-		function badValue2( value ) {
-			return function() {
-				gcd( [ 4, value ] );
-			};
+		function getValue( d ) {
+			return d.x;
 		}
 	});
 
@@ -90,13 +85,14 @@ describe( 'compute-gcd', function tests() {
 		}
 		function badValue( value ) {
 			return function() {
-				gcd( [], value );
+				gcd( [ 1, 2 ], value );
 			};
 		}
 	});
 
-	it( 'should return null is provided an empty array', function test() {
-		assert.isNull( gcd([]) );
+	it( 'should return null if provided a array having fewer than 2 elements', function test() {
+		assert.isNull( gcd( [] ) );
+		assert.isNull( gcd( [ 1 ] ) );
 	});
 
 	it( 'should compute the gcd', function test() {
@@ -150,21 +146,27 @@ describe( 'compute-gcd', function tests() {
 		var data;
 
 		data = [
-			{ 'x':0 },
-			{ 'x':0 }
+			{'x':0},
+			{'x':0}
 		];
 		assert.strictEqual( gcd( data, getValue ), 0 );
 
 		data = [
-			{ 'x':1 },
-			{ 'x':0 }
+			{'x':1},
+			{'x':0}
 		];
 		assert.strictEqual( gcd( data, getValue ), 1 );
 
-		function getValue(obj) {
-			return obj.x;
-		}
+		data = [
+			{'x':95},
+			{'x':-35},
+			{'x':25}
+		];
+		assert.strictEqual( gcd( data, getValue ), 5 );
 
-	} );
+		function getValue( d ) {
+			return d.x;
+		}
+	});
 
 });

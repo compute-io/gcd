@@ -35,8 +35,6 @@ var val = gcd( [8, 12, 16] );
 // returns 4
 ```
 
-If provided an empty `array`, returns `null`.
-
 For object `arrays`, provide an accessor `function` for accessing `array` values
 
 ``` javascript
@@ -47,13 +45,22 @@ var data = [
 	['baz', 16]
 ];
 
-function getValue( d ) {
+function getValue( d, i ) {
 	return d[ 1 ];
 }
 
 var arr = gcd( arr, getValue );
 // returns 4
 ```
+
+
+
+## Notes
+
+-	For more than 3 values, a performance gain can be achieved if the values are sorted in ascending order.
+- 	If provided an `array` with a length less than `2`, the function returns `null`.
+
+
 
 ## Examples
 
@@ -79,9 +86,6 @@ $ node ./examples/index.js
 ```
 
 
-## Notes
-
-For more than 3 values, a performance gain can be achieved if the values are sorted in ascending order.
 
 
 ## Tests

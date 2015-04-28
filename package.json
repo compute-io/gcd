@@ -44,7 +44,9 @@
     "gcf",
     "hcf",
     "gcm",
-    "arithmetic"
+    "arithmetic",
+    "array",
+    "integer"
   ],
   "bugs": {
     "url": "https://github.com/compute-io/gcd/issues"
@@ -52,7 +54,7 @@
   "dependencies": {
     "validate.io-array": "^1.0.3",
     "validate.io-function": "^1.0.2",
-    "validate.io-integer": "^1.0.2"
+    "validate.io-integer": "^1.0.5"
   },
   "devDependencies": {
     "chai": "2.x.x",
