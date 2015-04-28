@@ -19,15 +19,13 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 
 ## Usage
 
-To use the module,
-
 ``` javascript
 var gcd = require( 'compute-gcd' );
 ```
 
-#### gcd( arr )
+#### gcd( arr[, accessor] )
 
-Computes the [greatest common divisor](http://en.wikipedia.org/wiki/Greatest_common_divisor) (gcd) of two or more `integers`. 
+Computes the [greatest common divisor](http://en.wikipedia.org/wiki/Greatest_common_divisor) (gcd) of two or more `integers`.
 
 ``` javascript
 var val = gcd( [48, 18] );
@@ -39,6 +37,23 @@ var val = gcd( [8, 12, 16] );
 
 If provided an empty `array`, returns `null`.
 
+For object `arrays`, provide an accessor `function` for accessing `array` values
+
+``` javascript
+var data = [
+	['beep', 4],
+	['boop', 8],
+	['bap', 12],
+	['baz', 16]
+];
+
+function getValue( d ) {
+	return d[ 1 ];
+}
+
+var arr = gcd( arr, getValue );
+// returns 4
+```
 
 ## Examples
 
@@ -73,7 +88,7 @@ For more than 3 values, a performance gain can be achieved if the values are sor
 
 ### Unit
 
-Unit tests use the [Mocha](http://visionmedia.github.io/mocha) test framework with [Chai](http://chaijs.com) assertions. To run the tests, execute the following command in the top-level application directory:
+Unit tests use the [Mocha](http://mochajs.org) test framework with [Chai](http://chaijs.com) assertions. To run the tests, execute the following command in the top-level application directory:
 
 ``` bash
 $ make test
@@ -97,15 +112,15 @@ $ make view-cov
 ```
 
 
+---
 ## License
 
-[MIT license](http://opensource.org/licenses/MIT). 
+[MIT license](http://opensource.org/licenses/MIT).
 
 
----
 ## Copyright
 
-Copyright &copy; 2014. Athan Reines.
+Copyright &copy; 2014-2015. Athan Reines.
 
 
 [npm-image]: http://img.shields.io/npm/v/compute-gcd.svg

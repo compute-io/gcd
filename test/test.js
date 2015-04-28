@@ -73,6 +73,28 @@ describe( 'compute-gcd', function tests() {
 		}
 	});
 
+	it( 'should throw an error if provided an accessor which is not a function', function test() {
+		var values = [
+			'5',
+			5,
+			true,
+			undefined,
+			null,
+			NaN,
+			[],
+			{}
+		];
+
+		for ( var i = 0; i < values.length; i++ ) {
+			expect( badValue( values[ i ] ) ).to.throw( TypeError );
+		}
+		function badValue( value ) {
+			return function() {
+				gcd( [], value );
+			};
+		}
+	});
+
 	it( 'should return null is provided an empty array', function test() {
 		assert.isNull( gcd([]) );
 	});
@@ -122,5 +144,27 @@ describe( 'compute-gcd', function tests() {
 		data = [ 1500, 750, 150000, 625 ];
 		assert.strictEqual( gcd( data ), 125 );
 	});
+
+	it( 'should compute the gcd using an accessor function', function test() {
+
+		var data;
+
+		data = [
+			{ 'x':0 },
+			{ 'x':0 }
+		];
+		assert.strictEqual( gcd( data, getValue ), 0 );
+
+		data = [
+			{ 'x':1 },
+			{ 'x':0 }
+		];
+		assert.strictEqual( gcd( data, getValue ), 1 );
+
+		function getValue(obj) {
+			return obj.x;
+		}
+
+	} );
 
 });
