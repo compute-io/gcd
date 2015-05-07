@@ -141,6 +141,35 @@ describe( 'compute-gcd', function tests() {
 		assert.strictEqual( gcd( data ), 125 );
 	});
 
+	it( 'should compute the gcd when values exceed the max safe (32-bit) integer', function test() {
+		var data, a, b;
+
+		a = Math.pow( 2, 100 );
+		b = Math.pow( 2, 53 );
+
+		data = [ a, 0 ];
+		assert.strictEqual( gcd( data ), a );
+
+		data = [ 0, b ];
+		assert.strictEqual( gcd( data ), b );
+
+		// Verified on Wolfram Alpha:
+		data = [ a, b ];
+		assert.strictEqual( gcd( data ), 9007199254740992 );
+
+		// Verified on Wolfram Alpha:
+		data = [ a, 73453 ];
+		assert.strictEqual( gcd( data ), 1 );
+
+		// Verified on Wolfram Alpha:
+		data = [ a, 3491832 ];
+		assert.strictEqual( gcd( data ), 8 );
+
+		// Verified on Wolfram Alpha:
+		data = [ 3491832, a ];
+		assert.strictEqual( gcd( data ), 8 );
+	});
+
 	it( 'should compute the gcd using an accessor function', function test() {
 
 		var data;
