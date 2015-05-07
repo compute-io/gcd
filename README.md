@@ -23,6 +23,17 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 var gcd = require( 'compute-gcd' );
 ```
 
+
+#### gcd( a, b )
+
+Computes the [greatest common divisor](http://en.wikipedia.org/wiki/Greatest_common_divisor) (gcd) of two `integers`.
+
+``` javascript
+var val = gcd( 48, 18 );
+// returns 6
+```
+
+
 #### gcd( arr[, accessor] )
 
 Computes the [greatest common divisor](http://en.wikipedia.org/wiki/Greatest_common_divisor) (gcd) of two or more `integers`.

@@ -141,6 +141,16 @@ describe( 'compute-gcd', function tests() {
 		assert.strictEqual( gcd( data ), 125 );
 	});
 
+	it( 'should support an interface for providing two integers', function test() {
+		assert.strictEqual( gcd( 48, 18 ), 6 );
+
+		assert.strictEqual( gcd( 35, -21 ), 7 );
+
+		assert.strictEqual( gcd( -6, -4 ), 2 );
+
+		assert.strictEqual( gcd( Math.pow( 2, 100 ), 3491832 ), 8 );
+	});
+
 	it( 'should compute the gcd when values exceed the max safe (32-bit) integer', function test() {
 		var data, a, b;
 
