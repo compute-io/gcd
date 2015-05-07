@@ -27,7 +27,6 @@ describe( 'compute-gcd', function tests() {
 	it( 'should throw an error if not provided an integer array', function test() {
 		var values = [
 			'5',
-			5,
 			null,
 			undefined,
 			NaN,
@@ -90,6 +89,10 @@ describe( 'compute-gcd', function tests() {
 		}
 	});
 
+	it( 'should return null if only provided less than 2 integer arguments', function test() {
+		assert.isNull( gcd( 5 ) );
+	});
+
 	it( 'should return null if provided a array having fewer than 2 elements', function test() {
 		assert.isNull( gcd( [] ) );
 		assert.isNull( gcd( [ 1 ] ) );
@@ -139,6 +142,49 @@ describe( 'compute-gcd', function tests() {
 
 		data = [ 1500, 750, 150000, 625 ];
 		assert.strictEqual( gcd( data ), 125 );
+	});
+
+	it( 'should support an interface for providing two integers', function test() {
+		assert.strictEqual( gcd( 48, 18 ), 6 );
+
+		assert.strictEqual( gcd( 35, -21 ), 7 );
+
+		assert.strictEqual( gcd( -6, -4 ), 2 );
+
+		assert.strictEqual( gcd( Math.pow( 2, 100 ), 3491832 ), 8 );
+	});
+
+	it( 'should provide a variadic interface', function test() {
+		assert.strictEqual( gcd( 25, -35, 95 ), 5 );
+	});
+
+	it( 'should compute the gcd when values exceed the max safe (32-bit) integer', function test() {
+		var data, a, b;
+
+		a = Math.pow( 2, 100 );
+		b = Math.pow( 2, 53 );
+
+		data = [ a, 0 ];
+		assert.strictEqual( gcd( data ), a );
+
+		data = [ 0, b ];
+		assert.strictEqual( gcd( data ), b );
+
+		// Verified on Wolfram Alpha:
+		data = [ a, b ];
+		assert.strictEqual( gcd( data ), 9007199254740992 );
+
+		// Verified on Wolfram Alpha:
+		data = [ a, 73453 ];
+		assert.strictEqual( gcd( data ), 1 );
+
+		// Verified on Wolfram Alpha:
+		data = [ a, 3491832 ];
+		assert.strictEqual( gcd( data ), 8 );
+
+		// Verified on Wolfram Alpha:
+		data = [ 3491832, a ];
+		assert.strictEqual( gcd( data ), 8 );
 	});
 
 	it( 'should compute the gcd using an accessor function', function test() {
