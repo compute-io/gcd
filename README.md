@@ -24,13 +24,16 @@ var gcd = require( 'compute-gcd' );
 ```
 
 
-#### gcd( a, b )
+#### gcd( a, b[, c,...,n] )
 
-Computes the [greatest common divisor](http://en.wikipedia.org/wiki/Greatest_common_divisor) (gcd) of two `integers`.
+Computes the [greatest common divisor](http://en.wikipedia.org/wiki/Greatest_common_divisor) (gcd) of two or more `integers`.
 
 ``` javascript
 var val = gcd( 48, 18 );
 // returns 6
+
+var val = gcd( 8, 12, 16 );
+// returns 4
 ```
 
 
@@ -69,7 +72,7 @@ var arr = gcd( arr, getValue );
 ## Notes
 
 -	For more than 3 values, a performance gain can be achieved if the values are sorted in ascending order.
-- 	If provided an `array` with a length less than `2`, the function returns `null`.
+- 	If provided an `array` with a length less than `2` or a single `integer` argument, the function returns `null`.
 
 
 
