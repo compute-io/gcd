@@ -1,6 +1,6 @@
 {
   "name": "compute-gcd",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Computes the greatest common divisor (gcd).",
   "author": {
     "name": "Athan Reines",
